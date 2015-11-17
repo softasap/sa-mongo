@@ -1,0 +1,7 @@
+check process mongod matching "/usr/bin/mongod"
+   group database
+   start program = "/sbin/start mongod"
+   stop  program = "/sbin/stop mongod"
+   if failed host 127.0.0.1 port 27017 protocol http
+     and request "/" with timeout 10 seconds then restart
+   if 5 restarts within 5 cycles then timeout
