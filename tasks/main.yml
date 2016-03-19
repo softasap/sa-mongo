@@ -6,9 +6,9 @@
        -mongo
      
 
-  - include: "{{root_dir}}/tasks_mongodb_2.6.yml"
+  - include: "tasks_mongodb_2.6.yml"
     when: mongo_version == "2.6"
 
-  - include: "{{root_dir}}/tasks_mongodb_3.yml"
+  - include: "tasks_mongodb_3.yml"
     when: mongo_version == "3"
 
