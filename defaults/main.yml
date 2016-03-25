@@ -3,3 +3,6 @@
   root_dir: PLEASE PROVIDE PATH TO ANSIBLE DEVELOPER RECIPES FOLDER
   role_dir: "{{ lookup('pipe','pwd')|dirname }}"
   mongo_version: "3"  #  "2.6" | "3"
+  mongo_bind_ip: 127.0.0.1
+  mongo_conf_properties:
+    - {regexp: "^bind_ip =.*", line: "bind_ip = {{mongo_bind_ip}}"}

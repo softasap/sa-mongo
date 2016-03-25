@@ -1,0 +1,6 @@
+---
+# handlers file for sa-neo4j
+
+  - name: restart mongodb
+    service: name="{{mongodb_service_name}}" state=restarted
+    become: yes
