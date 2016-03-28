@@ -2,6 +2,9 @@
   # Parameters:
   #  prudentia_dir (provided)
 
+  - set_fact:
+      mongodb_service_name: mongod
+
   - name: MongoDB | Check if is present
     command: test -x /usr/bin/mongo
     when: ansible_system == "Linux"

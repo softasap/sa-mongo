@@ -1,0 +1,7 @@
+---
+  - name: MONGO | Patch settings /etc/mongod.conf
+    lineinfile: dest=/etc/mongod.conf regexp="{{item.regexp}}" line="{{item.line}}"
+    with_items: mongo_conf_properties
+    notify: restart mongodb
+    become: yes
+
