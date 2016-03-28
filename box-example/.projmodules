@@ -1,4 +1,4 @@
 [submodule "roles/sa-mongo"]
         path = roles/sa-mongo
-        url = git@github.com:softasap/sa-mongo.git
+        url = https://github.com/softasap/sa-mongo.git
 
