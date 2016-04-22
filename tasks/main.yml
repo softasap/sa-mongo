@@ -4,6 +4,12 @@
       that: mongo_version in [ "2.6", "3" ]
     tags: 
        -mongo
+
+  - name: Include release related vars
+    include_vars: "{{ item }}"
+    with_first_found:
+     - "{{root_dir}}/defaults/{{ansible_distribution_release}}_vars.yml"
+     - "{{root_dir}}/defaults/default_vars.yml"
      
 
   - include: tasks_mongodb_2.6.yml
