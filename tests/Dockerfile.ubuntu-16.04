@@ -12,7 +12,7 @@ RUN mkdir -p /etc/ansible
 COPY initctl_faker .
 RUN chmod +x initctl_faker && rm -fr /sbin/initctl && ln -s /initctl_faker /sbin/initctl
 
-COPY systemctl_faker .
+COPY sysctl_faker .
 RUN chmod +x sysctl_faker && rm -fr /sbin/sysctl && ln -s /sysctl_faker /sbin/sysctl
 
 # Install Ansible inventory file
