@@ -1,7 +1,6 @@
 ---
 # defaults file for sa-mongo
-  root_dir: PLEASE PROVIDE PATH TO ANSIBLE DEVELOPER RECIPES FOLDER
-  role_dir: "{{ lookup('pipe','pwd')|dirname }}"
+  root_dir: "{{role_path}}"
   mongo_version: "3"  #  "2.6" | "3"
   mongo_bind_ip: 127.0.0.1
   mongo_conf_properties:
