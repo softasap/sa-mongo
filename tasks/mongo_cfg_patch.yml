@@ -1,7 +1,16 @@
 ---
   - name: MONGO | Patch settings /etc/mongod.conf
     lineinfile: dest=/etc/mongod.conf regexp="{{item.regexp}}" line="{{item.line}}"
-    with_items: mongo_conf_properties
+    with_items: mongo_conf2_properties
+    when: mongo_version == "2.6"
     notify: restart mongodb
     become: yes
+
+  - name: MONGO | Patch settings /etc/mongod.conf
+    lineinfile: dest=/etc/mongod.conf regexp="{{item.regexp}}" line="{{item.line}}"
+    with_items: mongo_conf3_properties
+    when: mongo_version == "3"
+    notify: restart mongodb
+    become: yes
+
 

@@ -3,5 +3,8 @@
   root_dir: "{{role_path}}"
   mongo_version: "3"  #  "2.6" | "3"
   mongo_bind_ip: 127.0.0.1
-  mongo_conf_properties:
+  mongo_conf2_properties:
     - {regexp: "^bind_ip =.*", line: "bind_ip = {{mongo_bind_ip}}"}
+  mongo_conf3_properties:
+    - {regexp: "^  bindIp =.*", line: "  bindIp = {{mongo_bind_ip}}"}
+
