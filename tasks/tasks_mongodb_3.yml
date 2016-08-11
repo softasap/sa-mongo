@@ -21,10 +21,16 @@
     apt_repository: repo="deb http://repo.mongodb.org/apt/ubuntu {{ apt_source.mongodb }}/mongodb-org/3.0 multiverse"
     when: ansible_os_family == "Debian" and mongo_present|failed
     tags: mongodb3
-    sudo: yes
+    become: yes
 
   - name: MongoDB | Install
     apt: update-cache=yes force=yes state=present pkg=mongodb-org
     when: ansible_os_family == "Debian" and mongo_present|failed
-    sudo: yes
+    become: yes
     tags: mongodb3
+
+  - name: MongoDB | Ensure data folder exists
+    file: path=/data/db state=directory owner=mongodb
+    become: yes
+    tags: mongodb3
+
