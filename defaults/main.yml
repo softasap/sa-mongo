@@ -6,5 +6,5 @@
   mongo_conf2_properties:
     - {regexp: "^bind_ip =.*", line: "bind_ip = {{mongo_bind_ip}}"}
   mongo_conf3_properties:
-    - {regexp: "^  bindIp =.*", line: "  bindIp = {{mongo_bind_ip}}"}
+    - {regexp: "^  bindIp:.*", line: "  bindIp: {{mongo_bind_ip}}"}
 
