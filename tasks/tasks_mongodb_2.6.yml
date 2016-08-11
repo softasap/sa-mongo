@@ -34,3 +34,9 @@
     tags:
         -mongodb
         -setup
+
+  - name: MongoDB | Ensure data folder exists
+    file: path=/data/db state=directory owner=mongodb
+    become: yes
+    tags: mongodb
+
