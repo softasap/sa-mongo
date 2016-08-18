@@ -1,7 +1,7 @@
 ---
   - name: Mongo | Check mongo_version variable
     assert:
-      that: mongo_version in [ "2.6", "3" ]
+      that: mongo_version in [ "2.6", "3", "3.2" ]
     tags: 
        -mongo
 
@@ -17,5 +17,8 @@
 
   - include: tasks_mongodb_3.yml
     when: mongo_version == "3"
+
+  - include: tasks_mongodb_32.yml
+    when: mongo_version == "3.2"
 
   - include: mongo_cfg_patch.yml

@@ -13,12 +13,12 @@
     tags: mongodb3
 
   - name: MongoDB | Add GPG key to apt keyring
-    apt_key: id=7F0CEB10 url=http://docs.mongodb.org/10gen-gpg-key.asc
+    apt_key: id=EA312927 keyserver=hkp://keyserver.ubuntu.com state=present
     become: yes
     tags: mongodb3
 
   - name: MongoDB | Add Debian apt repository
-    apt_repository: repo="deb http://repo.mongodb.org/apt/ubuntu {{ apt_source.mongodb }}/mongodb-org/3.0 multiverse"
+    apt_repository: repo="deb http://repo.mongodb.org/apt/ubuntu {{ apt_source.mongodb }}/mongodb-org/3.2 multiverse"
     when: ansible_os_family == "Debian" and mongo_present|failed
     tags: mongodb3
     become: yes
