@@ -4,6 +4,8 @@
       that: mongo_version in [ "2.6", "3", "3.2" ]
     tags: 
        -mongo
+  
+  - include: __detect_init_system.yml
 
   - name: Include release related vars
     include_vars: "{{ item }}"
