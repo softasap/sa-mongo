@@ -34,6 +34,8 @@
     become: yes
     tags: mongodb3
 
+  - debug: var="upstart_system"
+
   - name: MongoDB | template systemd service
     template: src="{{role_dir}}/templates/systemd/mongod.service.j2" dest="/etc/systemd/system/mongod.service"
     become: yes

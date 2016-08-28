@@ -6,7 +6,7 @@
        -mongo
   
   - include: __detect_init_system.yml
-
+ 
   - name: Include release related vars
     include_vars: "{{ item }}"
     with_first_found:
