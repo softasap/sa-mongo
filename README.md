@@ -13,7 +13,7 @@ mongo_version: "3.2"  #  "2.6" | "3" | "3.2"
 
 Example:
 
-<pre>
+```YAML
 
 
      - {
@@ -21,4 +21,15 @@ Example:
          mongo_version: "3.2"
        }
 
-</pre>
+```
+
+
+Copyright and license
+---------------------
+
+Copyright - Vyacheslav Voronenko
+
+Code licensed under the [BSD 3 clause] (https://opensource.org/licenses/BSD-3-Clause) or the [MIT License] (http://opensource.org/licenses/MIT).
+
+Subscribe for roles updates at [FB] (https://www.facebook.com/SoftAsap/)
+
