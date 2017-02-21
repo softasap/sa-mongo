@@ -28,7 +28,7 @@
         -setup
 
   - name: MongoDB | Install
-    apt: update-cache=yes force=yes state=present pkg=mongodb-org
+    apt: update-cache=yes force=yes state=present pkg=mongodb-{{mongodb_family}}
     when: ansible_os_family == "Debian" and mongo_present|failed
     become: yes
     tags:
@@ -39,4 +39,3 @@
     file: path=/data/db state=directory owner=mongodb
     become: yes
     tags: mongodb
-
