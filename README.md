@@ -8,20 +8,38 @@ Role to install MongoDB 2.4 2.6 or 3.* on ubuntu based box.
 
 Version is controlled by  mongo_version parameter.
 
-mongo_version: "3.2"  #  "2.6" | "3" | "3.2"
+mongo_version: "3.4"  #  "2.6" | "3" | "3.2" | "3.4"
+mongo_family: "org" # "org" | "enterprise"
 
 
 Example:
+
+Simple
 
 ```YAML
 
 
      - {
          role: "sa-mongo",
-         mongo_version: "3.2"
+         mongo_version: "3.4"
        }
 
 ```
+
+Advanced:
+
+```YAML
+
+
+     - {
+         role: "sa-mongo",
+         mongo_version: "3.4",
+         mongo_family: "enterprise"
+       }
+
+```
+
+
 
 
 Usage with ansible galaxy workflow
