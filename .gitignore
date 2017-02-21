@@ -3,3 +3,4 @@ box-example/roles
 *.swp
 *.idea
 *.save
+local*.sh

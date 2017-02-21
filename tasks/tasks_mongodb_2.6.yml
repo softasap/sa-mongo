@@ -2,7 +2,7 @@
   - set_fact:
       mongodb_service_name: mongod
 
-  - name: MongoDB | Check if is present
+  - name: MongoDB 26 | Check if is present
     command: test -x /usr/bin/mongo
     when: ansible_system == "Linux"
     ignore_errors: yes
@@ -11,7 +11,7 @@
         -mongodb
         -setup
 
-  - name: MongoDB | Add GPG key to apt keyring
+  - name: MongoDB 26 | Add GPG key to apt keyring
     shell: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
     when: ansible_os_family == "Debian" and mongo_present|failed
     become: yes
@@ -19,24 +19,23 @@
         -mongodb
         -setup
 
-  - name: MongoDB | Add apt repository
-    copy: src={{root_dir}}/templates/apt-source dest=/etc/apt/sources.list.d/mongodb.list mode=644
+  - name: MongoDB 26 | Add apt repository
+    copy: src={{role_dir}}/templates/apt-source dest=/etc/apt/sources.list.d/mongodb.list mode=644
     when: ansible_os_family == "Debian" and mongo_present|failed
     become: yes
     tags:
         -mongodb
         -setup
 
-  - name: MongoDB | Install
-    apt: update-cache=yes force=yes state=present pkg=mongodb-org
+  - name: MongoDB 26 | Install pkg=mongodb-{{mongo_family}}
+    apt: update-cache=yes force=yes state=present pkg=mongodb-{{mongo_family}}
     when: ansible_os_family == "Debian" and mongo_present|failed
     become: yes
     tags:
         -mongodb
         -setup
 
-  - name: MongoDB | Ensure data folder exists
+  - name: MongoDB 26 | Ensure data folder exists
     file: path=/data/db state=directory owner=mongodb
     become: yes
     tags: mongodb
-
