@@ -20,7 +20,7 @@
         -setup
 
   - name: MongoDB 26 | Add apt repository
-    copy: src={{root_dir}}/templates/apt-source dest=/etc/apt/sources.list.d/mongodb.list mode=644
+    copy: src={{role_dir}}/templates/apt-source dest=/etc/apt/sources.list.d/mongodb.list mode=644
     when: ansible_os_family == "Debian" and mongo_present|failed
     become: yes
     tags:
@@ -28,7 +28,7 @@
         -setup
 
   - name: MongoDB 26 | Install
-    apt: update-cache=yes force=yes state=present pkg=mongodb-{{mongodb_family}}
+    apt: update-cache=yes force=yes state=present pkg=mongodb-{{mongo_family}}
     when: ansible_os_family == "Debian" and mongo_present|failed
     become: yes
     tags:

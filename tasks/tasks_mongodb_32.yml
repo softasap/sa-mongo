@@ -18,13 +18,13 @@
     tags: mongodb3
 
   - name: MongoDB 32 | Add Debian apt repository
-    apt_repository: repo="deb http://repo.mongodb.org/apt/ubuntu {{ apt_source.mongodb }}/mongodb-{{mongodb_family}}/3.2 multiverse"
+    apt_repository: repo="deb http://repo.mongodb.org/apt/ubuntu {{ apt_source.mongodb }}/mongodb-{{mongo_family}}/3.2 multiverse"
     when: ansible_os_family == "Debian" and mongo_present|failed
     tags: mongodb3
     become: yes
 
   - name: MongoDB 32 | Install
-    apt: update-cache=yes force=yes state=present pkg="mongodb-{{mongodb_family}}"
+    apt: update-cache=yes force=yes state=present pkg="mongodb-{{mongo_family}}"
     when: ansible_os_family == "Debian" and mongo_present|failed
     become: yes
     tags: mongodb3

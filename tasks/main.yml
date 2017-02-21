@@ -5,9 +5,9 @@
     tags:
        -mongo
 
-  - name: Mongo | Check mongodb_family variable
+  - name: Mongo | Check mongo_family variable
     assert:
-      that: mongodb_family in [ "org", "enterprise" ]
+      that: mongo_family in [ "org", "enterprise" ]
     tags:
        -mongo
 
@@ -18,8 +18,8 @@
   - name: Include release related vars
     include_vars: "{{ item }}"
     with_first_found:
-     - "{{root_dir}}/defaults/{{ansible_distribution_release}}_vars.yml"
-     - "{{root_dir}}/defaults/default_vars.yml"
+     - "{{role_dir}}/defaults/{{ansible_distribution_release}}_vars.yml"
+     - "{{role_dir}}/defaults/default_vars.yml"
 
 
   - include: tasks_mongodb_2.6.yml

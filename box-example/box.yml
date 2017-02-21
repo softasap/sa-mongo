@@ -3,8 +3,8 @@
 
   vars:
     - root_dir: ..
-    - custom_mongodb_family: "org"
-    - custom_mongodb_version: "3.4"
+    - custom_mongo_family: "org"
+    - custom_mongo_version: "3.4"
 
 
   pre_tasks:
@@ -13,9 +13,9 @@
   roles:
      - {
          role: "sa-mongo",
-         mongo_version: "{{custom_mongodb_version}}",
+         mongo_version: "{{custom_mongo_version}}",
          mongo_bind_ip: "0.0.0.0",
-         mongo_family:  "{{custom_mongodb_family}}"
+         mongo_family:  "{{custom_mongo_family}}"
        }
 
 
