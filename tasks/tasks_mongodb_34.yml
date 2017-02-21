@@ -5,43 +5,43 @@
   - set_fact:
       mongodb_service_name: mongod
 
-  - name: MongoDB | Check if is present
+  - name: MongoDB 34 | Check if is present
     command: test -x /usr/bin/mongo
     when: ansible_system == "Linux"
     ignore_errors: yes
     register: mongo_present
     tags: mongodb3
 
-  - name: MongoDB | Add GPG key to apt keyring
+  - name: MongoDB 34 | Add GPG key to apt keyring
     apt_key: id=0C49F3730359A14518585931BC711F9BA15703C6 keyserver=hkp://keyserver.ubuntu.com state=present
     become: yes
     tags: mongodb3
 
-  - name: MongoDB | Add Debian apt repository
+  - name: MongoDB 34 | Add Debian apt repository
     apt_repository: repo="deb http://repo.mongodb.org/apt/ubuntu {{ apt_source.mongodb }}/mongodb-{{mongodb_family}}/3.4 multiverse"
     when: ansible_os_family == "Debian" and mongo_present|failed
     tags: mongodb3
     become: yes
 
-  - name: MongoDB | Install
+  - name: MongoDB 34 | Install
     apt: update-cache=yes force=yes state=present pkg=mongodb-{{mongodb_family}}
     when: ansible_os_family == "Debian" and mongo_present|failed
     become: yes
     tags: mongodb3
 
-  - name: MongoDB | Ensure data folder exists
+  - name: MongoDB 34 | Ensure data folder exists
     file: path=/data/db state=directory owner=mongodb
     become: yes
     tags: mongodb3
 
   - debug: var="upstart_system"
 
-  - name: MongoDB | template systemd service
+  - name: MongoDB 34 | template systemd service
     template: src="{{role_dir}}/templates/systemd/mongod.service.j2" dest="/etc/systemd/system/mongod.service"
     become: yes
     when: upstart_system == "systemd"
 
-  - name: MongoDB | start service
+  - name: MongoDB 34 | start service
     service: name=mongod state=started enabled=yes
     become: yes
     when: upstart_system == "systemd" and docker_test is not defined
