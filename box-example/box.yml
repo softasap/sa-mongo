@@ -8,7 +8,7 @@
 
 
   pre_tasks:
-    - debug: msg="Pre tasks section"
+    - debug: msg="{{custom_mongo_family}} - {{custom_mongo_version}}"
 
   roles:
      - {
