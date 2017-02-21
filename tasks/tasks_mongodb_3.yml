@@ -23,7 +23,7 @@
     tags: mongodb3
     become: yes
 
-  - name: MongoDB 30 | Install
+  - name: MongoDB 30 | Install mongodb-{{mongo_family}}
     apt: update-cache=yes force=yes state=present pkg="mongodb-{{mongo_family}}"
     when: ansible_os_family == "Debian" and mongo_present|failed
     become: yes
