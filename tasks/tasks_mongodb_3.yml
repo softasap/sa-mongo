@@ -18,7 +18,7 @@
     tags: mongodb3
 
   - name: MongoDB 30 | Add Debian apt repository
-    apt_repository: repo="deb http://repo.mongodb.org/apt/ubuntu {{ apt_source.mongodb }}/mongodb-{{mongo_family}}/3.0 multiverse"
+    apt_repository: repo="deb http://repo.mongodb.{{mongo_repo_suffix}}/apt/ubuntu {{ apt_source.mongodb }}/mongodb-{{mongo_family}}/3.0 multiverse"
     when: ansible_os_family == "Debian" and mongo_present|failed
     tags: mongodb3
     become: yes
