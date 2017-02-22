@@ -11,7 +11,9 @@
     tags:
        -mongo
 
-
+  - set_fact:
+      mongo_repo_suffix: com
+    when: mongo_family=="enterprise"
 
   - include: __detect_init_system.yml
 
