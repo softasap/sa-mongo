@@ -1,4 +1,5 @@
+# mongodb: {{ ansible_distribution_release }} - revert once supported
   apt_source: {
-                  mongodb: "{{ ansible_distribution_release }}",
+                  mongodb: "xenial",
                   arch: "[ arch=amd64,arm64,ppc64el,s390x ]"
               }
