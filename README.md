@@ -7,24 +7,28 @@ sa-mongo
 Role to install MongoDB 2.4 2.6 3.4 or 3.6 on ubuntu based box.
 
 
-| Distribution | < MongoDB 2.6 | MongoDB 3.2 | MongoDB 3.4 | MongoDB 3.6 |
+| Distribution |   MongoDB 2.6 | MongoDB 3.2 | MongoDB 3.4 | MongoDB 3.6 |
 | ------------ |:-------------:|:-----------:|:-----------:|:-----------:|
 | Ubuntu 14.04 | :white_check_mark: | :white_check_mark:| :white_check_mark:| :no_entry:|
 | Ubuntu 16.04 | :no_entry: | :white_check_mark:| :white_check_mark:| :white_check_mark:|
 | Ubuntu 18.04 | :no_entry: | :white_check_mark:| :white_check_mark:| :white_check_mark:|
 
 - :white_check_mark: - should work fine
-- :interrobang: - older version
+- :interrobang: - there were no production deploys for a while
 - :no_entry: - not recommended for installation
 
 Check for mongodb EOL for versions.  Generally, you should target latest or previous release.
 Historic releases are provided for compability with old deployments that were using that role.
 
+Check current travis tests  https://travis-ci.org/softasap/sa-mongo/builds   
+
 
 Version is controlled by  mongo_version parameter.
 
-mongo_version: "3.4"  #  "2.6" | "3" | "3.2" | "3.4"
+```
+mongo_version: "3.4"  #  "2.6" | "3" | "3.2" | "3.4" | "3.6"
 mongo_family: "org" # "org" | "enterprise"
+```
 
 
 Example:
