@@ -13,7 +13,7 @@
 
   - name: MongoDB 26 | Add GPG key to apt keyring
     shell: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-    when: ansible_os_family == "Debian" and mongo_present|failed
+    when: ansible_os_family == "Debian" and mongo_present is failed
     become: yes
     tags:
         -mongodb
@@ -21,7 +21,7 @@
 
   - name: MongoDB 26 | Add apt repository
     copy: src={{role_dir}}/templates/apt-source dest=/etc/apt/sources.list.d/mongodb.list mode=644
-    when: ansible_os_family == "Debian" and mongo_present|failed
+    when: ansible_os_family == "Debian" and mongo_present is failed
     become: yes
     tags:
         -mongodb
@@ -29,7 +29,7 @@
 
   - name: MongoDB 26 | Install pkg=mongodb-{{mongo_family}}
     apt: update-cache=yes force=yes state=present pkg=mongodb-{{mongo_family}}
-    when: ansible_os_family == "Debian" and mongo_present|failed
+    when: ansible_os_family == "Debian" and mongo_present is failed
     become: yes
     tags:
         -mongodb
