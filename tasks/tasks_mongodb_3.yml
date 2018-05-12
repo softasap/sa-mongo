@@ -19,13 +19,13 @@
 
   - name: MongoDB 30 | Add Debian apt repository
     apt_repository: repo="deb http://repo.mongodb.{{mongo_repo_suffix}}/apt/ubuntu {{ apt_source.mongodb }}/mongodb-{{mongo_family}}/3.0 multiverse"
-    when: ansible_os_family == "Debian" and mongo_present|failed
+    when: ansible_os_family == "Debian" and mongo_present is failed
     tags: mongodb3
     become: yes
 
   - name: MongoDB 30 | Install mongodb-{{mongo_family}}
     apt: update-cache=yes force=yes state=present pkg="mongodb-{{mongo_family}}"
-    when: ansible_os_family == "Debian" and mongo_present|failed
+    when: ansible_os_family == "Debian" and mongo_present is failed
     become: yes
     tags: mongodb3
 

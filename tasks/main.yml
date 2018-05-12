@@ -36,4 +36,7 @@
   - include: tasks_mongodb_34.yml
     when: mongo_version == "3.4"
 
+  - include: tasks_mongodb_36.yml
+    when: mongo_version == "3.6"
+
   - include: mongo_cfg_patch.yml
