@@ -2,6 +2,6 @@
 # handlers file for sa-neo4j
 
   - name: restart mongodb
-    service: name="{{mongodb_service_name}}" state=restarted
+    service: name="{{ mongodb_service_name }}" state=restarted
     when: docker_test is not defined # Docker systemd is not available
     become: yes

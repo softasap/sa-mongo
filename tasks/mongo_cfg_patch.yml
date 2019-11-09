@@ -1,20 +1,20 @@
 ---
   - name: MONGO | Patch settings /etc/mongod.conf
-    lineinfile: dest=/etc/mongod.conf regexp="{{item.regexp}}" line="{{item.line}}"
-    with_items: "{{mongo_conf2_properties}}"
+    lineinfile: dest=/etc/mongod.conf regexp="{{ item.regexp }}" line="{{ item.line }}"
+    with_items: "{{ mongo_conf2_properties }}"
     when: mongo_version == "2.6"
     notify: restart mongodb
     become: yes
 
   - name: MONGO | Patch settings /etc/mongod.conf
-    lineinfile: dest=/etc/mongod.conf regexp="{{item.regexp}}" line="{{item.line}}"
-    with_items: "{{mongo_conf3_properties}}"
+    lineinfile: dest=/etc/mongod.conf regexp="{{ item.regexp }}" line="{{ item.line }}"
+    with_items: "{{ mongo_conf3_properties }}"
     when: mongo_version in ["3", "3.2","3.4","3.6"]
     notify: restart mongodb
     become: yes
 
   - name: MONGO | Pin version
-    shell: "{{item}}"
+    shell: "{{ item }}"
     become: yes
     with_items:
       - "echo \"mongodb-org hold\" | sudo dpkg --set-selections"
@@ -22,4 +22,6 @@
       - echo "\"mongodb-org-shell hold\" | sudo dpkg --set-selections"
       - echo "\"mongodb-org-mongos hold\" | sudo dpkg --set-selections"
       - echo "\"mongodb-org-tools hold\" | sudo dpkg --set-selections"
-    when: option_pin_version and mongo_version in ["3", "3.2","3.4","3.6"]  
+    when: option_pin_version and mongo_version in ["3", "3.2","3.4","3.6"]
+    tags:
+      - skip_ansible_lint

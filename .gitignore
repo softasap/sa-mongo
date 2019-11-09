@@ -1,6 +1,8 @@
 box-example/roles
 *.retry
-*.swp
-*.idea
-*.save
+tempfile
 local*.sh
+.idea
+__pycache__/
+**/*/__pycache__
+*.pyc
