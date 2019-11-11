@@ -1,4 +1,4 @@
-  apt_source: { 
+  apt_source: {
                   mongodb: "{{ ansible_distribution_release }}",
-                  arch: "[ arch=amd64,arm64,ppc64el,s390x ]"
+                  arch: "[ arch=amd64,arm64 ]"
               }

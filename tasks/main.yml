@@ -11,7 +11,8 @@
     tags:
        -mongo
 
-  - set_fact:
+  - name: Mongo | set repo suffix fact
+    set_fact:
       mongo_repo_suffix: com
     when: mongo_family=="enterprise"
 
@@ -20,9 +21,10 @@
   - name: Include release related vars
     include_vars: "{{ item }}"
     with_first_found:
-     - "{{role_dir}}/defaults/{{ansible_distribution_release}}_vars.yml"
-     - "{{role_dir}}/defaults/default_vars.yml"
+     - "{{ role_dir }}/defaults/{{ ansible_distribution_release }}_vars.yml"
+     - "{{ role_dir }}/defaults/default_vars.yml"
 
+  - debug: msg="About to install {{ mongo_version }}"
 
   - include_tasks: tasks_mongodb_2.6.yml
     when: mongo_version == "2.6"

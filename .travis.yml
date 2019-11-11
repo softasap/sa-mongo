@@ -2,12 +2,12 @@
 sudo: required
 
 env:
-  - distribution='ubuntu'
-    version='14.04'
-    mongo='2.6'
-    init='/sbin/init'
-    run_opts=''
-    playbook='test26.yml'
+#  - distribution='ubuntu'
+#    version='14.04'
+#    mongo='2.6'
+#    init='/sbin/init'
+#    run_opts=''
+#    playbook='test26.yml'
   - distribution='ubuntu'
     version='14.04'
     mongo='3.2'
