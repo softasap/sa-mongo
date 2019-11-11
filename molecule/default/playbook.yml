@@ -12,5 +12,6 @@
 
   roles:
      - {
-        role: "sa-mongo"
+        role: "sa-mongo",
+        mongo_version: "3.4"
        }
