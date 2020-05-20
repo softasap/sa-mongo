@@ -2,6 +2,8 @@
 - hosts: all
 
   pre_tasks:
+   
+    - debug: msg="======================TESTS26"
 
     - name: TRAVIS TEST | Ensure multiverse repo is enabled
       apt_repository:
