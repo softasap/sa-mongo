@@ -14,6 +14,7 @@ env:
     init='/sbin/init'
     run_opts=''
     playbook='test32.yml'
+
   - distribution='ubuntu'
     version='14.04'
     mongo='3.4'
@@ -26,6 +27,7 @@ env:
     init='/sbin/init'
     run_opts=''
     playbook='test.yml'
+
   - distribution='ubuntu'
     version='16.04'
     mongo='3.2'
