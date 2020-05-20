@@ -3,6 +3,8 @@
 
   pre_tasks:
 
+    - debug: msg="======================TESTS34"
+
     - name: TRAVIS TEST | Ensure multiverse repo is enabled
       apt_repository:
         repo: "{{ item }}"
