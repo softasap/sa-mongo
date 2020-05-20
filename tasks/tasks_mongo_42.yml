@@ -1,0 +1,51 @@
+---
+  # Parameters:
+  #  prudentia_dir (provided)
+
+  - name: MongoDB | set service name fact
+    set_fact:
+      mongodb_service_name: mongod
+
+  - name: MongoDB 42 | Check if is present
+    command: test -x /usr/bin/mongo
+    when: ansible_system == "Linux"
+    ignore_errors: yes
+    register: mongo_present
+    tags: mongodb4
+
+  - name: MongoDB 42 | Add GPG key to apt keyring
+    apt_key:
+      url: https://www.mongodb.org/static/pgp/server-4.2.asc
+      state: present
+    become: yes
+    tags: mongodb4
+
+  - debug: msg="deb {{ apt_source.arch }} https://repo.mongodb.{{ mongo_repo_suffix }}/apt/ubuntu {{ apt_source.mongodb }}/mongodb-{{ mongo_family }}/4.2 multiverse"
+
+  - name: MongoDB 42 | Add Debian apt repository
+    apt_repository:
+      repo: "deb {{ apt_source.arch }} https://repo.mongodb.{{ mongo_repo_suffix }}/apt/ubuntu {{ apt_source.mongodb }}/mongodb-{{ mongo_family }}/4.2 multiverse"
+      state: present
+      filename: mongodb
+    when: ansible_os_family == "Debian" and mongo_present is failed
+    tags: mongodb4
+    become: yes
+
+  - name: MongoDB 42 | Install mongodb-{{ mongo_family }}
+    apt: update-cache=yes force=yes state=present pkg=mongodb-{{ mongo_family }}
+    when: ansible_os_family == "Debian" and mongo_present is failed
+    become: yes
+    tags: mongodb4
+
+  - name: MongoDB 42 | Ensure data folder exists
+    file: path=/data/db state=directory owner=mongodb
+    become: yes
+    tags: mongodb4
+
+  - debug: var="upstart_system"
+
+  - name: MongoDB 42 | start service
+    service: name=mongod state=started enabled=yes
+    become: yes
+    when: upstart_system == "systemd" and docker_test is not defined
+    tags: mongodb4
