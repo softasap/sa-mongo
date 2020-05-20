@@ -4,14 +4,14 @@ sa-mongo
 [![Build Status](https://travis-ci.org/softasap/sa-mongo.svg?branch=master)](https://travis-ci.org/softasap/sa-mongo)
 
 
-Role to install MongoDB 2.4 2.6 3.4 or 3.6 on ubuntu based box.
+Role to install MongoDB 3.2, 3.4. 3.6 or 4.2 on ubuntu based box.
 
 
-| Distribution |   MongoDB 2.6 | MongoDB 3.2 | MongoDB 3.4 | MongoDB 3.6 |
-| ------------ |:-------------:|:-----------:|:-----------:|:-----------:|
-| Ubuntu 14.04 | :white_check_mark: | :white_check_mark:| :white_check_mark:| :no_entry:|
-| Ubuntu 16.04 | :no_entry: | :white_check_mark:| :white_check_mark:| :white_check_mark:|
-| Ubuntu 18.04 | :no_entry: | :white_check_mark:| :white_check_mark:| :white_check_mark:|
+| Distribution |   MongoDB 2.6 | MongoDB 3.2 | MongoDB 3.4 | MongoDB 3.6 | MongoDB 4.2 |
+| ------------ |:-------------:|:-----------:|:-----------:|:-----------:|:-----------:|
+| Ubuntu 14.04 | :white_check_mark: | :white_check_mark:| :white_check_mark:| :no_entry:| :no_entry:|
+| Ubuntu 16.04 | :no_entry: | :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:|
+| Ubuntu 18.04 | :no_entry: | :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:|
 
 - :white_check_mark: - should work fine
 - :interrobang: - there were no production deploys for a while
@@ -26,7 +26,7 @@ Check current travis tests  https://travis-ci.org/softasap/sa-mongo/builds
 Version is controlled by  mongo_version parameter.
 
 ```
-mongo_version: "3.4"  #  "2.6" | "3" | "3.2" | "3.4" | "3.6"
+mongo_version: "4.2"  #  "2.6" | "3" | "3.2" | "3.4" | "3.6" | "4.2"
 mongo_family: "org" # "org" | "enterprise"
 ```
 
@@ -40,7 +40,7 @@ Simple
 
      - {
          role: "sa-mongo",
-         mongo_version: "3.4"
+         mongo_version: "4.2"
        }
 
 ```
@@ -52,7 +52,7 @@ Advanced:
 
      - {
          role: "sa-mongo",
-         mongo_version: "3.4",
+         mongo_version: "4.2",
          mongo_family: "enterprise"
        }
 
