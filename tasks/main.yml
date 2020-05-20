@@ -38,6 +38,9 @@
   - include_tasks: tasks_mongodb_34.yml
     when: mongo_version == "3.4"
 
+  - include_tasks: tasks_mongodb_36.yml
+    when: mongo_version == "3.6"
+
   - include_tasks: tasks_mongodb_42.yml
     when: mongo_version == "4.2"
 
