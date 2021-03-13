@@ -8,7 +8,7 @@ sa-mongo
 Role to install MongoDB 3.2, 3.4. 3.6, 4.0 or 4.2 on ubuntu based box.
 
 
-| Distribution |   MongoDB 2.6 | MongoDB 3.2 | MongoDB 3.4 | MongoDB 3.6 | MongoDB 4.0 | | MongoDB 4.2 |
+| Distribution |   MongoDB 2.6 | MongoDB 3.2 | MongoDB 3.4 | MongoDB 3.6 | MongoDB 4.0 |   MongoDB 4.2 |
 | ------------ |:-------------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|
 | Ubuntu 14.04 | :white_check_mark: | :white_check_mark:| :white_check_mark:| :no_entry:| :no_entry:| :no_entry:|
 | Ubuntu 16.04 | :no_entry: | :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:|
