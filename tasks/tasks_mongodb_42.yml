@@ -27,6 +27,7 @@
     apt_repository:
       repo: "deb {{ apt_source.arch }} https://repo.mongodb.{{ mongo_repo_suffix }}/apt/ubuntu {{ apt_source.mongodb }}/mongodb-{{ mongo_family }}/4.2 multiverse"
       state: present
+      update_cache: no
       filename: mongodb
     when: ansible_os_family == "Debian" and mongo_present is failed
     tags: mongodb4
