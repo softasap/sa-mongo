@@ -1,10 +1,10 @@
 ---
   - name: Debug | scope of work
-    debug: "installing '{{ mongo_family }}' family version '{{ mongo_version }}'"
+    debug: msg="installing '{{ mongo_family }}' family version '{{ mongo_version }}'"
 
   - name: Mongo | Check mongo_version variable
     assert:
-      that: mongo_version in [ "2.6", "3", "3.2", "3.4", "3.6", "4.0", "4.2" ]
+      that: str(mongo_version) in [ "2.6", "3", "3.2", "3.4", "3.6", "4.0", "4.2" ]
     tags:
        -mongo
 
@@ -45,7 +45,7 @@
   - include_tasks: tasks_mongodb_36.yml
     when: mongo_version == "3.6"
 
-  - include_tasks: tasks_mongodb_42.yml
+  - include_tasks: tasks_mongodb_40.yml
     when: mongo_version == "4.0"
 
   - include_tasks: tasks_mongodb_42.yml
