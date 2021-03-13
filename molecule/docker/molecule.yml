@@ -23,4 +23,4 @@ provisioner:
       instance:
         foo: bar
         role_under_test: ${MOLECULE_TEST_ROLE:-role_under_test}
-        molecule_mongo_version: ${MOLECULE_MONGO_VERSION>:-3.6}
+        molecule_mongo_version: ${MOLECULE_MONGO_VERSION>:-"3.6"}
