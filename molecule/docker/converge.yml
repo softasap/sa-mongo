@@ -22,6 +22,8 @@
         name:
           - gnupg-agent
           - apt-transport-https
+          - libcurl3
+          - openssl
         state: present
       when: ansible_os_family == "Debian"
 
