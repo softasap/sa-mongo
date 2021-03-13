@@ -47,23 +47,23 @@ jobs:
 #          - name: fedora33
 #          - name: centos7
           - name: ubuntu1604
-            mongo: "3.2"
+            mongo_version: "3.2"
           - name: ubuntu1604
-            mongo: "3.4"
+            mongo_version: "3.4"
           - name: ubuntu1604
-            mongo: "4.0"
+            mongo_version: "4.0"
           - name: ubuntu1604
-            mongo: "4.2"
+            mongo_version: "4.2"
           - name: ubuntu1804
-            mongo: "3.2"
+            mongo_version: "3.2"
           - name: ubuntu1804
-            mongo: "3.4"
+            mongo_version: "3.4"
           - name: ubuntu1804
-            mongo: "4.0"
+            mongo_version: "4.0"
           - name: ubuntu1804
-            mongo: "4.2"
+            mongo_version: "4.2"
           - name: ubuntu1804
-
+            mongo_version: "4.6"
 #          - name: ubuntu2004
 
     steps:
@@ -102,4 +102,3 @@ jobs:
           MOLECULE_DISTRO: ${{ matrix.distro.name }}
           MOLECULE_MONGO_VERSION: ${{ matrix.distro.mongo_version }}
           MOLECULE_TEST_ROLE: role_under_test
-
