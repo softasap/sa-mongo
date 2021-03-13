@@ -36,14 +36,22 @@
     tags: mongodb3
 
   - name: MongoDB 32 | Ensure data folder exists
-    file: path=/data/db state=directory owner=mongodb
+    file:
+      path: /data/db
+      state: directory
+      owner: mongodb
+      group: mongodb
+      mode: "u=rwx,g=r,o="
     become: yes
     tags: mongodb3
 
-  - debug: var="upstart_system"
-
   - name: MongoDB 32 | template systemd service
-    template: src="{{ role_dir }}/templates/systemd/mongod.service.j2" dest="/etc/systemd/system/mongod.service"
+    template:
+        src: "{{ role_dir }}/templates/systemd/mongod.service.j2"
+        dest: "/etc/systemd/system/mongod.service"
+        owner: root
+        group: root
+        mode: "u=rw,g=r,o=r"
     become: yes
     when: upstart_system == "systemd"
 

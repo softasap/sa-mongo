@@ -36,6 +36,11 @@
     tags: mongodb3
 
   - name: MongoDB 30 | Ensure data folder exists
-    file: path=/data/db state=directory owner=mongodb
+    file:
+      path: /data/db
+      state: directory
+      owner: mongodb
+      group: mongodb
+      mode: "u=rwx,g=r,o="
     become: yes
     tags: mongodb3

@@ -24,7 +24,8 @@
      - "{{ role_dir }}/defaults/{{ ansible_distribution_release }}_vars.yml"
      - "{{ role_dir }}/defaults/default_vars.yml"
 
-  - debug: msg="About to install {{ mongo_version }}"
+  - name: Debug |
+    debug: msg="About to install {{ mongo_version }}"
 
   - include_tasks: tasks_mongodb_2.6.yml
     when: mongo_version == "2.6"

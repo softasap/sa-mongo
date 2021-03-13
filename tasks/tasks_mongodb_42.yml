@@ -20,7 +20,8 @@
     become: yes
     tags: mongodb4
 
-  - debug: msg="deb {{ apt_source.arch }} https://repo.mongodb.{{ mongo_repo_suffix }}/apt/ubuntu {{ apt_source.mongodb }}/mongodb-{{ mongo_family }}/4.2 multiverse"
+  - name: Debug | deb line
+    debug: msg="deb {{ apt_source.arch }} https://repo.mongodb.{{ mongo_repo_suffix }}/apt/ubuntu {{ apt_source.mongodb }}/mongodb-{{ mongo_family }}/4.2 multiverse"
 
   - name: MongoDB 42 | Add Debian apt repository
     apt_repository:
@@ -38,11 +39,17 @@
     tags: mongodb4
 
   - name: MongoDB 42 | Ensure data folder exists
-    file: path=/data/db state=directory owner=mongodb
+    file:
+      path: /data/db
+      state: directory
+      owner: mongodb
+      group: mongodb
+      mode: "u=rwx,g=r,o="
     become: yes
     tags: mongodb4
 
-  - debug: var="upstart_system"
+  - name: Debug | detected upstart
+    debug: var="upstart_system"
 
   - name: MongoDB 42 | start service
     service: name=mongod state=started enabled=yes
