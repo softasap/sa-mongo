@@ -1,5 +1,4 @@
 #!/bin/bash
- 
 
 brew install git
 brew install python

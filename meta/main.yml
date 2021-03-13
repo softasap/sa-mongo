@@ -3,6 +3,8 @@ galaxy_info:
   author: vyacheslav voronenko
   description: installs MongoDB 3.2, 3.4, 3.6, 4.2 on ubuntu based box
   company: http://www.voronenko.info/
+  role_name: sa_mongo
+  namespace: softasap
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
   # issue_tracker_url: http://example.com/issue/tracker

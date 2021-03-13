@@ -20,12 +20,14 @@
     become: yes
     tags: mongodb3
 
-  - debug: msg="deb {{ apt_source.arch }} https://repo.mongodb.{{ mongo_repo_suffix }}/apt/ubuntu {{ apt_source.mongodb }}/mongodb-{{ mongo_family }}/3.6 multiverse"
+  - name: Debug | deb line
+    debug: msg="deb {{ apt_source.arch }} https://repo.mongodb.{{ mongo_repo_suffix }}/apt/ubuntu {{ apt_source.mongodb }}/mongodb-{{ mongo_family }}/3.6 multiverse"
 
   - name: MongoDB 36 | Add Debian apt repository
     apt_repository:
       repo: "deb {{ apt_source.arch }} https://repo.mongodb.{{ mongo_repo_suffix }}/apt/ubuntu {{ apt_source.mongodb }}/mongodb-{{ mongo_family }}/3.6 multiverse"
       state: present
+      update_cache: no
       filename: mongodb
     when: ansible_os_family == "Debian" and mongo_present is failed
     tags: mongodb3
@@ -38,14 +40,25 @@
     tags: mongodb3
 
   - name: MongoDB 36 | Ensure data folder exists
-    file: path=/data/db state=directory owner=mongodb
+    file:
+      path: /data/db
+      state: directory
+      owner: mongodb
+      group: mongodb
+      mode: "u=rwx,g=r,o="
     become: yes
     tags: mongodb3
 
-  - debug: var="upstart_system"
+  - name: Debug | detected upstart
+    debug: var="upstart_system"
 
   - name: MongoDB 36 | template systemd service
-    template: src="{{ role_dir }}/templates/systemd/mongod.service.j2" dest="/etc/systemd/system/mongod.service"
+    template:
+       src: "{{ role_dir }}/templates/systemd/mongod.service.j2"
+       dest: "/etc/systemd/system/mongod.service"
+       owner: root
+       group: root
+       mode: "u=rw,g=r,o=r"
     become: yes
     when: upstart_system == "systemd"
 

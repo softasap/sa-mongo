@@ -20,7 +20,7 @@ Role to install MongoDB 3.2, 3.4. 3.6 or 4.2 on ubuntu based box.
 Check for mongodb EOL for versions.  Generally, you should target latest or previous release.
 Historic releases are provided for compability with old deployments that were using that role.
 
-Check current travis tests  https://travis-ci.org/softasap/sa-mongo/builds   
+Check current travis tests  https://travis-ci.org/softasap/sa-mongo/builds
 
 
 Version is controlled by  mongo_version parameter.
