@@ -32,7 +32,7 @@
 #        preferred_python_version: "3"
 #      }
   tasks:
-   - debug: msg="{{custom_mongo_family}} - {{custom_mongo_version}}"
+   - debug: msg="org - {{molecule_mongo_version}}"
 
    - name: Apply role runtime
      include_role:
