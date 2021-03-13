@@ -31,7 +31,7 @@ jobs:
           python-version: '3.6'
 
       - name: Install test dependencies.
-        run: pip3 install yamllint ansible-lint
+        run: pip3 install yamllint ansible-lint ansible==2.9.6
 
       - name: Lint code.
         run: |
@@ -62,8 +62,6 @@ jobs:
             mongo_version: "4.0"
           - name: ubuntu1804
             mongo_version: "4.2"
-          - name: ubuntu1804
-            mongo_version: "4.6"
 #          - name: ubuntu2004
 
     steps:
