@@ -42,6 +42,9 @@
     when: mongo_version == "3.6"
 
   - include_tasks: tasks_mongodb_42.yml
+    when: mongo_version == "4.0"
+
+  - include_tasks: tasks_mongodb_42.yml
     when: mongo_version == "4.2"
 
   - include_tasks: mongo_cfg_patch.yml
