@@ -1,7 +1,7 @@
 ---
   - name: Mongo | Check mongo_version variable
     assert:
-      that: mongo_version in [ "2.6", "3", "3.2", "3.4", "3.6", "4.2" ]
+      that: mongo_version in [ "2.6", "3", "3.2", "3.4", "3.6", "4.0", "4.2" ]
     tags:
        -mongo
 

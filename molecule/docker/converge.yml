@@ -32,6 +32,8 @@
 #        preferred_python_version: "3"
 #      }
   tasks:
+   - debug: msg="{{custom_mongo_family}} - {{custom_mongo_version}}"
+
    - name: Apply role runtime
      include_role:
        name: "{{ role_under_test | default('role_under_test') }}"
