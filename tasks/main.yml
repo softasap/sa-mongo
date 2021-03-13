@@ -1,6 +1,6 @@
 ---
   - name: Debug | scope of work
-    debug: msg="installing '{{ mongo_family }}' family version '{{ mongo_version }}'"
+    debug: msg="installing '{{ mongo_family }}' family version '{{ mongo_version }}' passed as {{ mongo_version | type_debug }}"
 
   - name: Mongo | Check mongo_version variable
     assert:

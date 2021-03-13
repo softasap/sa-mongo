@@ -61,6 +61,11 @@ platforms:
     box: ubuntu/bionic64
     memory: 4096
     cpus: 2
+    interfaces:
+      - network_name: private_network
+        type: dhcp
+        auto_config: true
+
 #    groups:
 #      - groupname
 
