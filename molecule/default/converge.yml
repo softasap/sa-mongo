@@ -13,5 +13,6 @@
   roles:
      - {
         role: "sa-mongo",
-        mongo_version: "4.0"
+        mongo_version: "4.0",
+        mongo_bind_ip: "0.0.0.0"
        }
