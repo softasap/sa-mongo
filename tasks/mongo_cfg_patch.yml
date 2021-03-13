@@ -9,7 +9,7 @@
   - name: MONGO | Patch settings /etc/mongod.conf
     lineinfile: dest=/etc/mongod.conf regexp="{{ item.regexp }}" line="{{ item.line }}"
     with_items: "{{ mongo_conf3_properties }}"
-    when: mongo_version in ["3", "3.2","3.4","3.6"]
+    when: mongo_version in ["3", "3.2", "3.4", "3.6", "4.0", "4.2"]
     notify: restart mongodb
     become: yes
 
@@ -22,6 +22,6 @@
       - echo "\"mongodb-org-shell hold\" | sudo dpkg --set-selections"
       - echo "\"mongodb-org-mongos hold\" | sudo dpkg --set-selections"
       - echo "\"mongodb-org-tools hold\" | sudo dpkg --set-selections"
-    when: option_pin_version and mongo_version in ["3", "3.2","3.4","3.6"]
+    when: option_pin_version and mongo_version in ["3", "3.2","3.4","3.6", "4.0", "4.2"]
     tags:
       - skip_ansible_lint

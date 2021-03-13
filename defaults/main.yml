@@ -3,8 +3,9 @@
   role_dir: "{{role_path}}"
 
   option_pin_version: false
+  option_install_yq: true
 
-  mongo_version: "4.2" #  "2.6" | "3" | "3.2" | "3.4" | "3.6" | "4.2"
+  mongo_version: "4.2" #  "2.6" | "3" | "3.2" | "3.4" | "3.6" | "4.0" | "4.2"
   mongo_family: "org" # org | enterprise
   mongo_repo_suffix: "org"
   mongo_bind_ip: 127.0.0.1

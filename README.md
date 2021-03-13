@@ -56,7 +56,15 @@ Advanced:
 
 ```
 
+Activate authorization from the console
+---------------------------------------
 
+```shell
+mongo --eval "use admin; db.createUser({user: \"master\", pwd: \"ofthe7keys\",roles: [ { role:\"userAdminAnyDatabase\", db: \"admin\" } ]})"
+sudo yq e ".security.authorization = \"enabled\"" -i /etc/mongod.conf
+sudo service mongod restart
+mongo --port 27017  --authenticationDatabase "admin" -u "master" -p
+```
 
 
 Usage with ansible galaxy workflow
@@ -79,7 +87,6 @@ Please adjust the path accordingly.
        }
 
 ```
-
 
 Copyright and license
 ---------------------
