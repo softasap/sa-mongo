@@ -17,7 +17,7 @@
         cache_valid_time: 86400 #One day
       when: ansible_os_family == "Debian"
 
-    - name: Install default ubuntu packages
+    - name: Install optional default ubuntu packages sometimes missing on naked debians
       apt:
         name:
           - gnupg-agent
@@ -25,7 +25,11 @@
           - libcurl3
           - openssl
         state: present
+      become: yes
+      ignore_errors: yes
+      register: mongo_optional_deps
       when: ansible_os_family == "Debian"
+
 
 #  roles:
 #    - {
