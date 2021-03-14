@@ -20,11 +20,12 @@
     - name: Install optional default ubuntu packages sometimes missing on naked debians
       apt:
         name:
-          - gpg
           - apt-transport-https
-          - libcurl3
           - openssl
+          - gpg
+          - libcurl3
         state: present
+        update_cache: yes
       become: yes
       ignore_errors: yes
       register: mongo_optional_deps
