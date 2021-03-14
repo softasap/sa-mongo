@@ -20,6 +20,7 @@
     - name: Install optional default ubuntu packages sometimes missing on naked debians
       apt:
         name:
+          - gpg
           - apt-transport-https
           - libcurl3
           - openssl
