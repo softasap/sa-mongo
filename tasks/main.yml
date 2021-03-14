@@ -48,7 +48,7 @@
         - openssl
       state: present
     become: yes
-    ignore_errors: true
+    ignore_errors: True
     when: ansible_os_family == "Debian"
 
   - include_tasks: tasks_mongodb_2.6.yml
