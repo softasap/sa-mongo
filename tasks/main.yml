@@ -39,18 +39,19 @@
     become: yes
     when: option_install_yq
 
-  - name: Install optional default ubuntu packages sometimes missing on naked debians
-    apt:
-      name:
-        - gnupg-agent
-        - apt-transport-https
-        - libcurl3
-        - openssl
-      state: present
-    become: yes
-    ignore_errors: yes
-    register: mongo_optional_deps
-    when: ansible_os_family == "Debian"
+# TODO: Check situation on aws canonical ubuntu minimal with those
+#  - name: Install optional default ubuntu packages sometimes missing on naked debians
+#    apt:
+#      name:
+#        - gnupg-agent
+#        - apt-transport-https
+#        - libcurl3
+#        - openssl
+#      state: present
+#    become: yes
+#    ignore_errors: yes
+#    register: mongo_optional_deps
+#    when: ansible_os_family == "Debian"
 
   - include_tasks: tasks_mongodb_2.6.yml
     when: mongo_version == "2.6"
