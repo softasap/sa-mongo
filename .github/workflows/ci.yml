@@ -52,6 +52,8 @@ jobs:
           - name: ubuntu1604
             mongo_version: "3.4"
           - name: ubuntu1604
+            mongo_version: "3.6"
+          - name: ubuntu1604
             mongo_version: "4.0"
           - name: ubuntu1604
             mongo_version: "4.2"
@@ -59,6 +61,8 @@ jobs:
             mongo_version: "3.2"
           - name: ubuntu1804
             mongo_version: "3.4"
+          - name: ubuntu1804
+            mongo_version: "3.6"
           - name: ubuntu1804
             mongo_version: "4.0"
           - name: ubuntu1804
