@@ -6,6 +6,7 @@ name: CI
     branches:
       - master
       - develop
+      - github-workflow-mess
       - '!release/*'
   schedule:
     - cron: "10 5 * * 2"
@@ -31,7 +32,10 @@ jobs:
           python-version: '3.6'
 
       - name: Install test dependencies.
-        run: pip3 install yamllint ansible-lint ansible==2.9.6
+        run: pip3 install yamllint ansible-lint ansible==2.9.20
+
+      - name: Install ansible-galaxy dependencies
+        run: pipenv run ansible-galaxy collection install community.docker
 
       - name: Lint code.
         run: |
@@ -51,6 +55,8 @@ jobs:
           - name: ubuntu1604
             mongo_version: "3.4"
           - name: ubuntu1604
+            mongo_version: "3.6"
+          - name: ubuntu1604
             mongo_version: "4.0"
           - name: ubuntu1604
             mongo_version: "4.2"
@@ -58,6 +64,8 @@ jobs:
             mongo_version: "3.2"
           - name: ubuntu1804
             mongo_version: "3.4"
+          - name: ubuntu1804
+            mongo_version: "3.6"
           - name: ubuntu1804
             mongo_version: "4.0"
           - name: ubuntu1804
@@ -89,8 +97,8 @@ jobs:
         run: |
           pipenv install --deploy --dev
 
-#      - name: Install test dependencies.
-#        run: pip3 install ansible==2.9.6 molecule[docker] docker
+      - name: Install ansible-galaxy dependencies
+        run: pipenv run ansible-galaxy collection install community.docker
 
       - name: Run simplified molecule tests.
         run: pipenv run molecule converge -s docker

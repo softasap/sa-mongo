@@ -30,7 +30,7 @@
         -setup
 
   - name: MongoDB 26 | Install pkg=mongodb-{{ mongo_family }}
-    apt: update-cache=yes force=yes state=present pkg=mongodb-{{ mongo_family }}
+    apt: update_cache=yes force=yes state=present pkg=mongodb-{{ mongo_family }}
     when: ansible_os_family == "Debian" and mongo_present is failed
     become: yes
     tags:
